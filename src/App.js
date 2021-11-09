@@ -12,6 +12,7 @@ import Login from "./Pages/Login/Login";
 import NotFound from "./Pages/NotFound/NotFound";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails";
+import Signup from "./Pages/Signup/Signup";
 
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
             </PrivateRoute>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/signup">
+              <Signup />
             </Route>
 
             <Route path="*">

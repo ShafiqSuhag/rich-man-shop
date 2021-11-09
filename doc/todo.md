@@ -11,7 +11,7 @@
 - Product details = done 
 - Private purchase page = done 
 - login form 
--- gooogle signin 
+-- gooogle signin = done
 -- password authentication 
-- firebase auth 
-- context api 
+- firebase auth = done
+- context api = done

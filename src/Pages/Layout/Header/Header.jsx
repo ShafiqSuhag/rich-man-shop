@@ -1,9 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 const Header = () => {
-    const currentUser = {}
+const {currentUser, logout} = useAuth()
     const handleLogout =() => {
         alert('handleLogout')
+        logout()
+
     }
     return (
         <div>
@@ -11,8 +14,8 @@ const Header = () => {
             <ul>
                 <NavLink to="/home">Home</NavLink>
                 {
-                    !currentUser.email ?
-                        <NavLink to="/login">Login</NavLink>
+                    !currentUser?.email ?
+                            <NavLink to="/login">Login</NavLink>
                         :
                         <>
                             <button onClick={handleLogout}>Logout</button>
