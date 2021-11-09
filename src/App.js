@@ -2,10 +2,13 @@ import {
   BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
 import './App.css';
+import Checkout from "./Pages/Checkout/Checkout";
 import Home from './Pages/Home/Home';
 import Footer from "./Pages/Layout/Footer/Footer";
 import Header from "./Pages/Layout/Header/Header";
+import Login from "./Pages/Login/Login";
 import NotFound from "./Pages/NotFound/NotFound";
+import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 
 function App() {
@@ -24,6 +27,13 @@ function App() {
           <Route path="/product-details/:id">
             <ProductDetails></ProductDetails>
           </Route>
+          <PrivateRoute path="/checkout">
+            <Checkout />
+          </PrivateRoute>
+          <Route path="/login">
+            <Login/>
+          </Route>
+        
           <Route path="*">
             <NotFound />
           </Route>
