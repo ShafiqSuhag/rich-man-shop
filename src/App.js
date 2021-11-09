@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import { AuthContext } from "./Contexts/AuthContext";
+import Dashboard from "./DashboardPages/Dashboard/Dashboard";
 import useFirebase from "./hooks/useFirebase";
 import Checkout from "./Pages/Checkout/Checkout";
 import Home from './Pages/Home/Home';
@@ -39,9 +40,15 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
+            <PrivateRoute path="/dashboard">
+              <Dashboard />
+            </PrivateRoute>
             <Route path="/signup">
               <Signup />
             </Route>
+            {/* <Route path="/add-new-product">
+              <AddNewProduct />
+            </Route> */}
 
             <Route path="*">
               <NotFound />
