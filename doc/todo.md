@@ -10,25 +10,28 @@
 -- extra section 
 - Product details = done 
 - Private purchase page = done 
-- login form 
+- login form  = done 
 -- gooogle signin = done
--- password authentication 
+-- login password authentication  = done 
+- Signup
+-- singup  authentication = done 
 - firebase auth = done
 - context api = done
 
 
 # Dashboard 
+- Nested Route = done 
 - Manage Products
--- Product Add 
--- Product List 
+-- Product Add = done 
+-- Product List = done
 --- Product remove by admin 
 - Reviews 
--- Add Reveiw By User 
--- User review list
+-- Add Reveiw By User - done 
+-- User review list - done 
 - Manage Order 
 -- Pending | Shipped 
-- Make Admin 
-- Pay (coming soon )
+- Make Admin = done 
+- Pay (coming soon ) = done 
 - Expolere Page 
 
 
