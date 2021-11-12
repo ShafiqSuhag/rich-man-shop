@@ -1,0 +1,44 @@
+
+const Products = [
+    {
+        name: "This Is Trash",
+        image: "https://static.nike.com/a/images/t_prod_ss/w_640,c_limit,f_auto/65fa795e-8ff1-440a-95f2-5e37018fe262/space-hippie-03-volt-this-is-trash-release-date.jpg",
+        shortDescription: "Space Hippie is a story of trash transformed. From the upper to the outsole, Space Hippie 03 is made from at least 45% recycled material by weight.       Its 'Space Waste Yarn' upper includes about 85% recycled polyester—made from recycled plastic bottles, T-shirts and yarn scraps—and uses a surplus FastFit tightening system to let you get in and go. A soft, Crater Foam midsole combines Nike Grind with a blend of foams for stability and a unique aesthetic, while the shoe's insole is made from ZoomX foam scraps, the same cushioning that creates the ultimate ride in Nike's NEXT% running shoes. We ditched the double box to deliver Space Hippie shoes in a single shoebox made from re-purposed material and printed on with a plant-based ink. It all adds up to one of our lowest carbon-footprint drops ever—the Nike Space Hippie Collection.",
+        price: 150,
+        gallaryImage: [
+            "https://static.nike.com/a/images/t_prod_ss/w_640,c_limit,f_auto/342b6577-fc32-4702-9418-92fc7f6702ea/space-hippie-03-volt-this-is-trash-release-date.jpg",
+            "https://static.nike.com/a/images/t_prod_ss/w_640,c_limit,f_auto/1806e717-716f-4967-8017-242301c31f31/space-hippie-03-volt-this-is-trash-release-date.jpg",
+            "https://static.nike.com/a/images/t_prod_sc/w_640,c_limit,f_auto/04af6997-0504-4865-81f1-ca12c5ebb6a0/space-hippie-03-volt-this-is-trash-release-date.jpg"
+        ]
+    },
+    {
+        name: "product 2",
+        image: "https://dummyimage.com/400x400/000/fff",
+        shortDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, non.",
+        price: 20,
+    },
+    {
+        name: "product 3",
+        image: "https://dummyimage.com/400x400/000/fff",
+        shortDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, non.",
+        price: 50,
+    },
+    {
+        name: "product 4",
+        image: "https://dummyimage.com/400x400/000/fff",
+        shortDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, non.",
+        price: 20,
+    },
+    {
+        name: "product 5",
+        image: "https://dummyimage.com/400x400/000/fff",
+        shortDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, non.",
+        price: 100,
+    },
+    {
+        name: "product 6",
+        image: "https://dummyimage.com/400x400/000/fff",
+        shortDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, non.",
+        price: 5,
+    },
+]

@@ -1,24 +1,24 @@
 import React from 'react';
 import { Route, Switch, useRouteMatch } from "react-router-dom";
-import MakeAdmin from '../MakeAdmin/MakeAdmin';
-import ManageOrders from '../ManageOrders/ManageOrders';
-import Payment from '../Payment/Payment';
-import AddNewProduct from '../Products/AddNewProduct/AddNewProduct';
-import ProductList from '../Products/ProductList/ProductList';
-import ReviewAdd from '../Review/ReviewAdd/ReviewAdd';
-import ReviewList from '../Review/ReviewList/ReviewList';
+import MakeAdmin from '../../MakeAdmin/MakeAdmin';
+import ManageOrders from '../../ManageOrders/ManageOrders';
+import Payment from '../../Payment/Payment';
+import AddNewProduct from '../../Products/AddNewProduct/AddNewProduct';
+import ProductList from '../../Products/ProductList/ProductList';
+import ReviewAdd from '../../Review/ReviewAdd/ReviewAdd';
+import ReviewList from '../../Review/ReviewList/ReviewList';
+import Header from '../Header/Header';
 import SideNavigation from '../SideNavigation/SideNavigation';
 
-const Dashboard = () => {
+const DashboardMaster = () => {
     let { path, url } = useRouteMatch();
-
     return (
         <div className="flex ">
             <div className="bg-green-100 w-60  h-full fixed">
                 <SideNavigation></SideNavigation>
             </div>
             <div className=" w-full ml-60 ">
-
+                <Header></Header>
                 <Switch>
                     <Route exact path={path}>
                         <h3>Home page conent </h3>
@@ -44,7 +44,7 @@ const Dashboard = () => {
                     <Route path={`${path}/add-review`}>
                         <ReviewAdd></ReviewAdd>
                     </Route>
-                    
+
                     <Route path={`${path}/*`}>
                         <h3>Not Found  </h3>
                     </Route>
@@ -57,4 +57,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default DashboardMaster;

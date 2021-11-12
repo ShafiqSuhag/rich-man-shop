@@ -3,12 +3,10 @@ import {
 } from "react-router-dom";
 import './App.css';
 import { AuthContext } from "./Contexts/AuthContext";
-import Dashboard from "./DashboardPages/Dashboard/Dashboard";
+import DashboardMaster from "./DashboardPages/Layout/DashboardMaster/DashboardMaster";
 import useFirebase from "./hooks/useFirebase";
 import Checkout from "./Pages/Checkout/Checkout";
 import Home from './Pages/Home/Home';
-import Footer from "./Pages/Layout/Footer/Footer";
-import Header from "./Pages/Layout/Header/Header";
 import Login from "./Pages/Login/Login";
 import NotFound from "./Pages/NotFound/NotFound";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
@@ -23,7 +21,7 @@ function App() {
       {/* <h1 className="bg-green-400">Hello Sohag</h1> */}
       <AuthContext.Provider value={firebaseAuth}>
         <Router>
-          <Header></Header>
+          
           <Switch>
             <Route exact path="/">
               <Home />
@@ -41,7 +39,7 @@ function App() {
               <Login />
             </Route>
             <PrivateRoute path="/dashboard">
-              <Dashboard />
+              <DashboardMaster />
             </PrivateRoute>
             <Route path="/signup">
               <Signup />
@@ -54,7 +52,7 @@ function App() {
               <NotFound />
             </Route>
           </Switch>
-          <Footer></Footer>
+         
         </Router >
       </AuthContext.Provider>
     </div >

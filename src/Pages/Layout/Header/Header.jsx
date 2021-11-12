@@ -10,23 +10,27 @@ const Header = () => {
     }
     return (
         <div>
-            LogoHere
-            <ul>
-                <NavLink to="/home">Home</NavLink>
+            <nav className="flex justify-between items-center my-2">
+                <div>
+                    TheBlackSmith
+                </div>
+                <div className=" py-2  ">
+                    <NavLink to="/home" className="nav-link">Home</NavLink>
 
-                <NavLink to="/add-new-product">New Product</NavLink>
-                {
-                    !currentUser?.email ?
-                        <NavLink to="/login">Login</NavLink>
-                        :
-                        <>
-                            <NavLink to="/dashboard">Dashboard</NavLink>
-                            <button onClick={handleLogout}>Logout</button>
-                        </>
-                }
+                    <NavLink to="/add-new-product" className="nav-link">New Product</NavLink>
+                    {
+                        !currentUser?.email ?
+                            <NavLink to="/login"  className="nav-link">Login</NavLink>
+                            :
+                            <>
+                                <NavLink to="/dashboard" className="nav-link">Dashboard</NavLink>
+                                <button onClick={handleLogout} className="nav-link">Logout</button>
+                            </>
+                    }
+                </div>
 
-            </ul>
-
+            </nav>
+            
 
         </div>
     );
