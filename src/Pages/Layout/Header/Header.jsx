@@ -16,8 +16,9 @@ const Header = () => {
                 </div>
                 <div className=" py-2  ">
                     <NavLink to="/home" className="nav-link">Home</NavLink>
+                    <NavLink to="/checkout" className="nav-link">Checkout</NavLink>
 
-                    <NavLink to="/add-new-product" className="nav-link">New Product</NavLink>
+                    <NavLink to="/explore-more-products" className="nav-link">Explore More Products</NavLink>
                     {
                         !currentUser?.email ?
                             <NavLink to="/login"  className="nav-link">Login</NavLink>

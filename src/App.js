@@ -6,6 +6,7 @@ import { AuthContext } from "./Contexts/AuthContext";
 import DashboardMaster from "./DashboardPages/Layout/DashboardMaster/DashboardMaster";
 import useFirebase from "./hooks/useFirebase";
 import Checkout from "./Pages/Checkout/Checkout";
+import ExploreMoreProducts from "./Pages/ExploreMoreProducts/ExploreMoreProducts";
 import Home from './Pages/Home/Home';
 import Login from "./Pages/Login/Login";
 import NotFound from "./Pages/NotFound/NotFound";
@@ -29,10 +30,13 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
+            <Route path="/explore-more-products">
+              <ExploreMoreProducts />
+            </Route>
             <Route path="/product-details/:id">
               <ProductDetails></ProductDetails>
             </Route>
-            <PrivateRoute path="/checkout">
+            <PrivateRoute path="/checkout/:id">
               <Checkout />
             </PrivateRoute>
             <Route path="/login">

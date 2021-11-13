@@ -1,23 +1,24 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
+    const { currentUser, logout } = useAuth()
+    const handleLogout = () => {
+        alert('handleLogout')
+        logout()
+
+    }
     return (
         <div class="navbar mb-2 shadow-lg bg-white text-black rounded">
-            
+
             <div class="flex-1 px-2 mx-2">
                 <div class="items-stretch hidden lg:flex">
-                    <a class="btn btn-ghost btn-sm rounded-btn">
-                        Home
-                    </a>
-                    <a class="btn btn-ghost btn-sm rounded-btn">
-                        Portfolio
-                    </a>
-                    <a class="btn btn-ghost btn-sm rounded-btn">
-                        About
-                    </a>
-                    <a class="btn btn-ghost btn-sm rounded-btn">
-                        Contact
-                    </a>
+                    <NavLink to="/home" className="btn btn-ghost btn-sm rounded-btn">Home</NavLink>
+
+
+
+
                 </div>
             </div>
             <div class="flex-1 lg:flex-none">
@@ -40,11 +41,21 @@ const Header = () => {
                 </button>
             </div>
             <div class="flex-none">
-                <div class="avatar">
-                    <div class="rounded-full w-10 h-10 m-1">
-                        <img src="https://i.pravatar.cc/500?img=32" />
-                    </div>
-                </div>
+                {
+                    !currentUser?.email ?
+                        <NavLink to="/login" className="nav-link">Login</NavLink>
+                        :
+                        <>
+                            <NavLink to="/dashboard" className="nav-link">Dashboard</NavLink>
+                            <button onClick={handleLogout} className="nav-link">Logout</button>
+                            <div class="avatar">
+                                <div class="rounded-full w-10 h-10 m-1">
+                                    <img src="https://i.pravatar.cc/500?img=32" alt="" />
+                                </div>
+                            </div>
+                        </>
+                }
+
             </div>
         </div>
 

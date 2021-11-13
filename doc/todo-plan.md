@@ -3,14 +3,14 @@ Our company focused on a Niche website (single product category selling website)
 We have a simple sample task for you.
 
 # Website Purpose:
-- Your website has to be related to Car Sales, Moto Bikes sales, Bicycle Sales, Apartment sales, handicraft( pottery, or woodcraft, jewellery, jute basket, etc.), camera, security camera, action camera, drone, air conditioner, table fan, Alarm Clock, sunglass, lipstick, nail polish, shampoo, Baby Care products (shampoo, lotion, etc.), Baby toys, Decorative lights, Blender, utensils, watch, water bottles, etc. However, your website can not be a typical e-commerce, restaurant, or clothing (textile related) or any of your previous assignments.
+done - Your website has to be related to Car Sales, Moto Bikes sales, Bicycle Sales, Apartment sales, handicraft( pottery, or woodcraft, jewellery, jute basket, etc.), camera, security camera, action camera, drone, air conditioner, table fan, Alarm Clock, sunglass, lipstick, nail polish, shampoo, Baby Care products (shampoo, lotion, etc.), Baby toys, Decorative lights, Blender, utensils, watch, water bottles, etc. However, your website can not be a typical e-commerce, restaurant, or clothing (textile related) or any of your previous assignments.
 
-- Make sure your design and website idea is unique. First, finalize your idea (what type of website you want to build). Then google the site design or visit themeforest to get your website idea. However, your website can not be related to your previous assignments or any demo project displayed in the course or in our conceptual sessions.
+done - Make sure your design and website idea is unique. First, finalize your idea (what type of website you want to build). Then google the site design or visit themeforest to get your website idea. However, your website can not be related to your previous assignments or any demo project displayed in the course or in our conceptual sessions.
 
-- Initially, do not spend too much time thinking about the design. Just spend 30minutes to an hour. And then finalize the idea. Start working on the project. If needed, put a placeholder image and keep developing the functionalities. Once the functionality is done, come back to add proper images.
+Done - Initially, do not spend too much time thinking about the design. Just spend 30minutes to an hour. And then finalize the idea. Start working on the project. If needed, put a placeholder image and keep developing the functionalities. Once the functionality is done, come back to add proper images.
 
 Task Detail:
-- Home page will have a header (simple navbar), banner, products, reviews, and footer. On the home page, the products will have a maximum of 6 items/products. You can put one or more products in a row based on your design. Each product should have a relevant name, image, short description, add a purchase or buy now button. If a user clicks on the purchase or buy now button it will take the user to the purchase page.
+done - Home page will have a header (simple navbar), banner, products, reviews, and footer. On the home page, the products will have a maximum of 6 items/products. You can put one or more products in a row based on your design. Each product should have a relevant name, image, short description, add a purchase or buy now button. If a user clicks on the purchase or buy now button it will take the user to the purchase page.
 
 - Add one extra section in the home page in addition to the 5 sections mentioned above.
 

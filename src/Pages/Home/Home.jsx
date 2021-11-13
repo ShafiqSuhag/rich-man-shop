@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../Layout/Footer/Footer';
 import Header from '../Layout/Header/Header';
 import ProductSection from './ProductSection/ProductSection';
+import ReviewSection from './ReviewSection/ReviewSection';
 
 const Home = () => {
     return (
@@ -17,6 +18,8 @@ const Home = () => {
 
             {/* product grid  */}
            <ProductSection></ProductSection>
+           <ReviewSection></ReviewSection>
+
             {/* product grid  */}
             <Footer></Footer>
         </div>
