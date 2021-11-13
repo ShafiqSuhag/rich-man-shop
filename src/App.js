@@ -10,6 +10,7 @@ import ExploreMoreProducts from "./Pages/ExploreMoreProducts/ExploreMoreProducts
 import Home from './Pages/Home/Home';
 import Login from "./Pages/Login/Login";
 import NotFound from "./Pages/NotFound/NotFound";
+import Page from "./Pages/Page/Page";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import Signup from "./Pages/Signup/Signup";
@@ -22,10 +23,9 @@ function App() {
       {/* <h1 className="bg-green-400">Hello Sohag</h1> */}
       <AuthContext.Provider value={firebaseAuth}>
         <Router>
-          
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Page/>
             </Route>
             <Route path="/home">
               <Home />
@@ -51,12 +51,10 @@ function App() {
             {/* <Route path="/add-new-product">
               <AddNewProduct />
             </Route> */}
-
             <Route path="*">
               <NotFound />
             </Route>
           </Switch>
-         
         </Router >
       </AuthContext.Provider>
     </div >
