@@ -30,9 +30,9 @@ done - Home page will have a header (simple navbar), banner, products, reviews, 
 
 - An Admin should be able to make another user an admin. If an admin wants, he/she will be able to add a product on the add a product page. After adding the product, this product will appear on the explore page. Please note, to add an image for a new product, you can just upload the image on any image hosting sites like imgbb, etc.and then have an input field to add the link of the image.
 
-- For our testing purpose please add one admin with the email address: admin@admin.com with password: 123456
+done - For our testing purpose please add one admin with the email address: admin@admin.com with password: 123456
 
-- Use a database to store information. It could be mongodb atlas or any other noSQL database.
+done - Use a database to store information. It could be mongodb atlas or any other noSQL database.
 
 Bonus:
 - At the time of adding review, you may add an input field to add ratings (a number between 0-5). Based on the rating, display rating star on each reviews in the home page

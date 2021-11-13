@@ -14,11 +14,7 @@ const Header = () => {
 
             <div class="flex-1 px-2 mx-2">
                 <div class="items-stretch hidden lg:flex">
-                    <NavLink to="/home" className="btn btn-ghost btn-sm rounded-btn">Home</NavLink>
-
-
-
-
+                    <NavLink to="/home" className="btn btn-ghost btn-sm rounded-btn text-black">Home</NavLink>
                 </div>
             </div>
             <div class="flex-1 lg:flex-none">
@@ -46,6 +42,7 @@ const Header = () => {
                         <NavLink to="/login" className="nav-link">Login</NavLink>
                         :
                         <>
+                            <NavLink to="/home" className="nav-link">Home</NavLink>
                             <NavLink to="/dashboard" className="nav-link">Dashboard</NavLink>
                             <button onClick={handleLogout} className="nav-link">Logout</button>
                             <div class="avatar">

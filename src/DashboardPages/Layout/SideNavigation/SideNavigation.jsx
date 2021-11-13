@@ -1,19 +1,47 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router';
 import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
+import useServerConfig from '../../../hooks/useServerConfig';
 
 const SideNavigation = () => {
+    const serverUrl = useServerConfig()
+    const { currentUser } = useAuth()
     let { path, url } = useRouteMatch();
+    const [isUserAdmin, setIsUserAdmin] = useState(false);
+
+
+    useEffect(() => {
+        if (currentUser?.email) {
+            axios.post(serverUrl + "/find-user-role", { email: currentUser?.email })
+                .then(response => {
+                    console.log(response);
+                    console.log(response.data.isAdmin);
+                    setIsUserAdmin(response.data.isAdmin);
+                })
+        }
+        // If(currentUser?.email){
+        //     axios.post(serverUrl + "/find-user-role", {email:currentUser?.email})
+        //         .then(response =>
+        //             console.log("Check Admin response", response)
+        //         )
+        // }
+
+    }, [currentUser])
+
+
+
     return (
         <>
-           
-            
+
+
             <div class="py-4 artboard artboard-demo bg-base-200 h-full rounded-none">
-            <div class="flex-1 hidden px-2 mx-2 lg:flex">
-                <span class="text-lg font-bold">
-                    RICH MAN SHOP
-                </span>
-            </div>
+                <div class="flex-1 hidden px-2 mx-2 lg:flex">
+                    <span class="text-lg font-bold">
+                        RICH MAN SHOP
+                    </span>
+                </div>
                 <ul class="menu py-4 shadow-lg bg-base-100 rounded-box">
                     {/* <li class="menu-title">
                     <span>
@@ -21,46 +49,119 @@ const SideNavigation = () => {
                     </span>
                     </li>
                 */}
-                    <li class="bordered">
-                        <Link to={`${url}`}>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
-                            </svg>
-                            Dashboard
-                        </Link>
-                    </li>
-                    <li class="">
-                        <NavLink
-                            to={`${url}/add-new-product`}
-                            className={isActive =>
-                                "" + (isActive ? " bordered" : " hover-bordered")
-                            }>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
-                            </svg>
-                            Add New Product
-                        </NavLink>
-                        {/* <Link to={`${url}/add-new-product`}>
+
+
+
+
+                    {/* ADMIN MENU  */}
+                    {
+                        isUserAdmin ?
+                            <>
+                                <li class="">
+                                    <NavLink
+                                        to={`${url}/add-new-product`}
+                                        className={isActive =>
+                                            "" + (isActive ? " bordered" : " hover-bordered")
+                                        }>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                        </svg>
+                                        New Product
+                                    </NavLink>
+                                    {/* <Link to={`${url}/add-new-product`}>
                        
                        Add New Product
                     </Link> */}
-                    </li>
-                    <li class="">
-                        <NavLink
-                            to={`${url}/product-list`}
-                            className={isActive =>
-                                "" + (isActive ? " bordered" : " hover-bordered")
-                            }>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
-                            </svg>
-                            Product List
-                        </NavLink>
-                        {/* <Link to={`${url}/add-new-product`}>
-                       
-                       Add New Product
-                    </Link> */}
-                    </li>
+                                </li>
+                                <li class="">
+                                    <NavLink
+                                        to={`${url}/product-list`}
+                                        className={isActive =>
+                                            "" + (isActive ? " bordered" : " hover-bordered")
+                                        }>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                        </svg>
+                                        Product List
+                                    </NavLink>
+                                </li>
+                                <li class="">
+                                    <NavLink
+                                        to={`${url}/make-admin`}
+                                        className={isActive =>
+                                            "" + (isActive ? " bordered" : " hover-bordered")
+                                        }>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                        </svg>
+                                        Make Admin
+                                    </NavLink>
+                                </li>
+                            </>
+
+                            :
+
+                            <>
+                                <li class="bordered">
+                                    <Link to={`${url}`}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                        </svg>
+                                        Dashboard
+                                    </Link>
+                                </li>
+
+                                <li class="">
+                                    <NavLink
+                                        to={`${url}/my-orders`}
+                                        className={isActive =>
+                                            "" + (isActive ? " bordered" : " hover-bordered")
+                                        }>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                        </svg>
+                                        My Orders
+                                    </NavLink>
+                                </li>
+                                <li class="">
+                                    <NavLink
+                                        to={`${url}/pay`}
+                                        className={isActive =>
+                                            "" + (isActive ? " bordered" : " hover-bordered")
+                                        }>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                        </svg>
+                                        Pay
+                                    </NavLink>
+                                </li>
+                                <li class="">
+                                    <NavLink
+                                        to={`${url}/review-list`}
+                                        className={isActive =>
+                                            "" + (isActive ? " bordered" : " hover-bordered")
+                                        }>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                        </svg>
+                                        Review list
+                                    </NavLink>
+                                </li>
+                                <li class="">
+                                    <NavLink
+                                        to={`${url}/add-review`}
+                                        className={isActive =>
+                                            "" + (isActive ? " bordered" : " hover-bordered")
+                                        }>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                        </svg>
+                                        New Review
+                                    </NavLink>
+                                </li>
+                            </>
+                    }
+                    {/* ADMIN MENU  */}
                 </ul>
             </div>
         </>

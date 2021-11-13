@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { SpinnerComponent } from 'react-element-spinner';
 import useServerConfig from '../../../hooks/useServerConfig';
 
 
@@ -10,7 +11,7 @@ import useServerConfig from '../../../hooks/useServerConfig';
 const ProductList = () => {
     const serverUrl = useServerConfig()
     const [products, setProducts] = useState([])
-    const [isActive, setIsActive] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
 
 
     useEffect(() => {
@@ -32,6 +33,7 @@ const ProductList = () => {
                     label: 'Yes',
                     onClick: () => {
                         alert('Click Yes' + _id)
+                        setIsLoading(true)
                         fetch(serverUrl + '/products', {
                             method: "DELETE",
                             headers: {
@@ -45,9 +47,11 @@ const ProductList = () => {
                                 console.log(result)
                                 const newProducts = products.filter(product => product._id !== result.id)
                                 setProducts(newProducts)
+                                setIsLoading(false)
 
                             })
-                            .catch(err => console.log("add tour error - ", err));
+                            .catch(err => console.log("add tour error - ", err))
+                            .finally(()=> setIsLoading(false))
                     }
                 },
                 {
@@ -60,7 +64,10 @@ const ProductList = () => {
 
     return (
         <div class="overflow-x-auto relative">
-            <div className="absulate left-0 top-0 absulate">
+            <SpinnerComponent loading={isLoading} position="centered" className="z-20">
+                </SpinnerComponent>
+            <div className="z-10">
+
                 <table class="table w-full">
                     <thead>
                         <tr>
@@ -128,10 +135,11 @@ const ProductList = () => {
                 </tfoot> */}
 
                 </table>
+                
 
             </div>
 
-          
+
 
 
         </div>
