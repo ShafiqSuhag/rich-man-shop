@@ -1,170 +1,139 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import useServerConfig from '../../../hooks/useServerConfig';
+
+
+
 
 const ProductList = () => {
+    const serverUrl = useServerConfig()
+    const [products, setProducts] = useState([])
+    const [isActive, setIsActive] = useState(true)
+
+
+    useEffect(() => {
+        axios.get(serverUrl + "/products")
+            .then(res => {
+                console.log("Product data ", res)
+                if (res.status === 200) {
+                    setProducts(res.data.productList)
+                }
+            })
+    }, [])
+
+    const handleProductDelete = (name, _id) => {
+        confirmAlert({
+            title: 'Confirm to delete',
+            message: 'Are you sure to delete ' + name + " ?",
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => {
+                        alert('Click Yes' + _id)
+                        fetch(serverUrl + '/products', {
+                            method: "DELETE",
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ id: _id })
+                        })
+                            .then(response => response.json())
+                            .then(result => {
+                                console.log(result)
+                                const newProducts = products.filter(product => product._id !== result.id)
+                                setProducts(newProducts)
+
+                            })
+                            .catch(err => console.log("add tour error - ", err));
+                    }
+                },
+                {
+                    label: 'No',
+                    onClick: () => alert('Click No')
+                }
+            ]
+        });
+    };
+
     return (
-        <div class="overflow-x-auto">
-            <table class="table w-full">
-                <thead>
-                    <tr>
-                        <th>
+        <div class="overflow-x-auto relative">
+            <div className="absulate left-0 top-0 absulate">
+                <table class="table w-full">
+                    <thead>
+                        <tr>
+                            {/* <th>
                             <label>
-                                <input type="checkbox" class="checkbox"/>
+                                <input type="checkbox" class="checkbox" />
                             </label>
-                        </th>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox"/>
-                            </label>
-                        </th>
-                        <td>
-                            <div class="flex items-center space-x-3">
-                                <div class="avatar">
-                                    <div class="w-12 h-12 mask mask-squircle">
-                                        <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component"/>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="font-bold">
-                                        Hart Hagerty
-                                    </div>
-                                    <div class="text-sm opacity-50">
-                                        United States
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Zemlak, Daniel and Leannon
+                        </th> */}
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Product Short Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            products.map(product => {
+                                const { _id, name, image, description, price } = product
+                                return (
+                                    <tr>
+                                        {/* <th>
+                                        <label>
+                                            <input type="checkbox" class="checkbox" />
+                                        </label>
+                                    </th> */}
+                                        <td>
+                                            <div class="flex items-center space-x-3">
+                                                <div class="avatar">
+                                                    <div class="w-12 h-12 mask mask-squircle">
+                                                        <img src={image} alt="Avatar Tailwind CSS Component" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="font-bold">
+                                                        {name}
+                                                    </div>
+                                                    {/* <div class="text-sm opacity-50">
+                                                    United States
+                                                </div> */}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {price}
+                                        </td>
+                                        <td>{description ? description.substring(0, 40) + "..." : ""}</td>
+                                        <th>
+                                            <button onClick={() => handleProductDelete(name, _id)}><i class="fas fa-trash-alt"></i></button>
+                                        </th>
 
-                            <br/>
-                            <span class ="badge badge-outline badge-sm">Desktop Support Technician</span>
-                        </td>
-                        <td>Purple</td>
-                        <th>
-                            <button class="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox"/>
-                            </label>
-                        </th>
-                        <td>
-                            <div class="flex items-center space-x-3">
-                                <div class="avatar">
-                                    <div class="w-12 h-12 mask mask-squircle">
-                                        <img src="/tailwind-css-component-profile-3@56w.png" alt="Avatar Tailwind CSS Component"/>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="font-bold">
-                                        Brice Swyre
-                                    </div>
-                                    <div class="text-sm opacity-50">
-                                        China
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Carroll Group
+                                    </tr>
+                                )
+                            })
+                        }
 
-                            <br/>
-                            <span class ="badge badge-outline badge-sm">Tax Accountant</span>
-                        </td>
-                        <td>Red</td>
-                        <th>
-                            <button class="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox"/>
-                            </label>
-                        </th>
-                        <td>
-                            <div class="flex items-center space-x-3">
-                                <div class="avatar">
-                                    <div class="w-12 h-12 mask mask-squircle">
-                                        <img src="/tailwind-css-component-profile-4@56w.png" alt="Avatar Tailwind CSS Component"/>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="font-bold">
-                                        Marjy Ferencz
-                                    </div>
-                                    <div class="text-sm opacity-50">
-                                        Russia
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Rowe-Schoen
 
-                            <br/>
-                            <span class ="badge badge-outline badge-sm">Office Assistant I</span>
-                        </td>
-                        <td>Crimson</td>
-                        <th>
-                            <button class="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
+                    </tbody>
+                    {/* <tfoot>
                     <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox"/>
-                            </label>
-                        </th>
-                        <td>
-                            <div class="flex items-center space-x-3">
-                                <div class="avatar">
-                                    <div class="w-12 h-12 mask mask-squircle">
-                                        <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component"/>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="font-bold">
-                                        Yancy Tear
-                                    </div>
-                                    <div class="text-sm opacity-50">
-                                        Brazil
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Wyman-Ledner
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Product Short Description</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot> */}
 
-                            <br/>
-                            <span class ="badge badge-outline badge-sm">Community Outreach Specialist</span>
-                        </td>
-                        <td>Indigo</td>
-                        <th>
-                            <button class="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
-                        <th></th>
-                    </tr>
-                </tfoot>
-            </table>
+                </table>
+
+            </div>
+
+          
+
+
         </div>
     );
 };
