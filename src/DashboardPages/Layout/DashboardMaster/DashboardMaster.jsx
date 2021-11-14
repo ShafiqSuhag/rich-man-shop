@@ -14,10 +14,10 @@ const DashboardMaster = () => {
     let { path, url } = useRouteMatch();
     return (
         <div className="flex ">
-            <div className="bg-green-100 w-60  h-full fixed">
+            <div className="bg-base-200 w-60  h-full fixed small-device-hide">
                 <SideNavigation></SideNavigation>
             </div>
-            <div className=" w-full ml-60 ">
+            <div className=" w-full md:ml-60  ">
                 <Header></Header>
                 <Switch>
                     <Route exact path={path}>

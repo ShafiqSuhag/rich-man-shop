@@ -1,17 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
 import Product from '../../../components/Product/Product';
+import useServerConfig from "../../../hooks/useServerConfig";
 
 
 
 
 
 const ProductSection = () => {
+    const serverUrl = useServerConfig()
     const [products, setProducts] = useState([])
 
-    const baseUrl = "http://localhost:5000"
+    
     useEffect(() => {
-        axios.get(baseUrl+"/products?size=6")
+        axios.get(serverUrl +"/products?size=6")
         .then(res => {
             console.log("Product data ", res)
             if(res.status===200){
@@ -20,8 +22,8 @@ const ProductSection = () => {
         })
     }, [])
     return (
-        <div className="mx-28 my-20">
-            <div className="grid grid-cols-3 gap-6  ">
+        <div className="mx-5  lg:mx-28 lg:my-20">
+            <div className="grid lg:grid-cols-3 gap-6  ">
 
                 {/* product  */}
                 {

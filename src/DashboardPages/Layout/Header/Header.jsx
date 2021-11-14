@@ -1,61 +1,142 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useRouteMatch } from 'react-router';
+import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import useServerConfig from '../../../hooks/useServerConfig';
 
 const Header = () => {
     const { currentUser, logout } = useAuth()
+    const serverUrl = useServerConfig()
+    let { path, url } = useRouteMatch();
+
     const handleLogout = () => {
-        alert('handleLogout')
         logout()
-
     }
+    const [isMobileMenuActive, setIsMobileMenuActive] = useState(false)
+    const handleMobileMenu = () => {
+        if (isMobileMenuActive) {
+            setIsMobileMenuActive(false)
+        } else {
+            setIsMobileMenuActive(true)
+        }
+    }
+    const [isUserAdmin, setIsUserAdmin] = useState(false);
+    useEffect(() => {
+        if (currentUser?.email) {
+            axios.post(serverUrl + "/find-user-role", { email: currentUser?.email })
+                .then(response => {
+                    console.log(response);
+                    console.log(response.data.isAdmin);
+                    setIsUserAdmin(response.data.isAdmin);
+                })
+        }
+
+
+    }, [currentUser])
     return (
-        <div class="navbar mb-2 shadow-lg bg-white text-black rounded">
-
-            <div class="flex-1 px-2 mx-2">
-                <div class="items-stretch hidden lg:flex">
-                    <NavLink to="/home" className="btn btn-ghost btn-sm rounded-btn text-black">Home</NavLink>
+        <>
+            {/* menu  */}
+            <nav className="flex justify-between md:justify-end items-center my-2 mx-5">
+                <div className="  lg:text-3xl text-gray-500 font-semibold md:hidden ">
+                    <Link to="/">RICH MAN SHOP</Link>
                 </div>
-            </div>
-            <div class="flex-1 lg:flex-none">
-                <div class="form-control">
-                    <input type="text" placeholder="Search" class="input input-ghost" />
-                </div>
-            </div>
-            <div class="flex-none">
-                <button class="btn btn-square btn-ghost">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </button>
-            </div>
-            <div class="flex-none">
-                <button class="btn btn-square btn-ghost">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-                    </svg>
-                </button>
-            </div>
-            <div class="flex-none">
-                {
-                    !currentUser?.email ?
-                        <NavLink to="/login" className="nav-link">Login</NavLink>
-                        :
-                        <>
-                            <NavLink to="/home" className="nav-link">Home</NavLink>
-                            <NavLink to="/dashboard" className="nav-link">Dashboard</NavLink>
-                            <button onClick={handleLogout} className="nav-link">Logout</button>
-                            <div class="avatar">
-                                <div class="rounded-full w-10 h-10 m-1">
-                                    <img src="https://i.pravatar.cc/500?img=32" alt="" />
+                <i class="fas fa-bars lg:hidden" onClick={handleMobileMenu}></i>
+                <div className=" py-2  flex items-center   small-device-hide">
+                    <NavLink to="/" className="nav-link-minimal">Home</NavLink>
+                    <NavLink to="/explore-more-products" className="nav-link-minimal">Explore Sneakers</NavLink>
+                    {
+                        !currentUser?.email ?
+                            <NavLink to="/login" className="nav-link-minimal">Login</NavLink>
+                            :
+                            <>
+                                <div class="avatar online ml-3">
+                                    <div class="rounded-full w-10 h-10">
+                                        <img src={currentUser?.photoURL ? currentUser?.photoURL : "./images/profile-pic.jpg"} alt=" profile " />
+                                    </div>
                                 </div>
-                            </div>
-                        </>
-                }
 
+
+                                <div class="dropdown dropdown-end mx-3">
+                                    <div tabindex="0" class="btn btn-ghost rounded-btn">My Account</div>
+                                    <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
+                                        <li>
+                                            <p className="mx-auto">Welcom , {currentUser.displayName}</p>
+                                        </li>
+
+                                        <li className="my-1">
+                                            <NavLink to="/dashboard" className="nav-link-minimal">Dashboard</NavLink>
+                                        </li>
+                                        <li className="my-1">
+                                            <button onClick={handleLogout} className="nav-link-minimal">Logout</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </>
+                    }
+                </div>
+            </nav>
+            {/* mobile menu  */}
+            <div className={`absolute z-10 w-full  ${isMobileMenuActive ? "    " : "hidden"}`}>
+                <ul className="bg-gray-200 px-1 py-1 shadow rounded">
+                    <NavLink to="/home" className="px-2 py-2 bg-gray-100 mb-1 block">Home</NavLink>
+                    <NavLink to="/explore-more-products" className="px-2 py-2 bg-gray-100 mb-1 block">Explore Sneakers</NavLink>
+
+                    {
+                        !currentUser?.email ?
+                            <NavLink to="/login" className="px-2 py-2 bg-gray-100 mb-1 block">Login</NavLink>
+                            :
+                            <>
+
+                                <li className="px-2 py-2 bg-gray-100 mb-1 block">
+                                    <div className="flex justify-between items-center">
+                                        <p className="">Welcom , {currentUser.displayName}</p>
+                                        <div class="avatar online ml-3">
+                                            <div class="rounded-full w-10 h-10">
+                                                <img src={currentUser?.photoURL ? currentUser?.photoURL : "./images/profile-pic.jpg"} alt=" profile " />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <NavLink to="/dashboard" className="px-2 py-2 bg-gray-100 mb-1 block">Dashboard</NavLink>
+                               
+                                {
+                                    isUserAdmin ?
+                                        <>
+                                            <NavLink to={`${url}/add-new-product`} className="px-2 py-2 bg-gray-100 mb-1 block">  New Product</NavLink>
+                                            <NavLink to={`${url}/product-list`} className="px-2 py-2 bg-gray-100 mb-1 block">   Manage Products</NavLink>
+                                            <NavLink to={`${url}/make-admin`} className="px-2 py-2 bg-gray-100 mb-1 block">      Make Admin</NavLink>
+                                            <NavLink to={`${url}/manage-all-orders`} className="px-2 py-2 bg-gray-100 mb-1 block">     Manage All Orders</NavLink>
+                                            <NavLink to={`${url}/product-list`} className="px-2 py-2 bg-gray-100 mb-1 block">   Manage Products</NavLink>
+
+                                        </>
+                                        :
+                                        <>
+                                            
+                                            <NavLink to={`${url}/my-orders`} className="px-2 py-2 bg-gray-100 mb-1 block"> My Orders</NavLink>
+                                            <NavLink to={`${url}/pay`} className="px-2 py-2 bg-gray-100 mb-1 block">Pay</NavLink>
+                                            <NavLink to={`${url}/review-list`} className="px-2 py-2 bg-gray-100 mb-1 block">Manage Review</NavLink>
+                                            <NavLink to={`${url}/add-review`} className="px-2 py-2 bg-gray-100 mb-1 block">New Review</NavLink>
+                                        </>
+                                }
+                                 <li className="px-2 py-2 bg-gray-100 mb-1 block">
+                                    <button onClick={handleLogout} className="px-2 py-2 bg-gray-100 mb-1 block">Logout</button>
+                                </li>
+
+                            </>
+                    }
+                    {/* conditional menu  */}
+                    
+                    {/* conditional menu  */}
+
+                </ul>
             </div>
-        </div>
+            {/* mobile menu  */}
+            {/* menu  */}
 
+
+
+        </>
     );
 };
 

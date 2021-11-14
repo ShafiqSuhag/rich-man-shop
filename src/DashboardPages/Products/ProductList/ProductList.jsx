@@ -51,7 +51,7 @@ const ProductList = () => {
 
                             })
                             .catch(err => console.log("add tour error - ", err))
-                            .finally(()=> setIsLoading(false))
+                            .finally(() => setIsLoading(false))
                     }
                 },
                 {
@@ -65,8 +65,8 @@ const ProductList = () => {
     return (
         <div class="overflow-x-auto relative">
             <SpinnerComponent loading={isLoading} position="centered" className="z-20">
-                </SpinnerComponent>
-            <div className="z-10">
+            </SpinnerComponent>
+            <div className="">
 
                 <table class="table w-full">
                     <thead>
@@ -135,7 +135,7 @@ const ProductList = () => {
                 </tfoot> */}
 
                 </table>
-                
+
 
             </div>
 

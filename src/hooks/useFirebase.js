@@ -9,7 +9,7 @@ const useFirebase = () => {
 
 
 
-
+  const [isLoading, setIsLoading] = useState(true)
   // console.log(location?.state?.form?.pathname)
   const [currentUser, setCurrentUser] = useState({})
   const [authErrorMsg, setAuthErrorMsg] = useState('')
@@ -18,6 +18,7 @@ const useFirebase = () => {
 
 
   const successRedirection = (location, history) => {
+    setIsLoading(false)
     setAuthErrorMsg('')
     console.log(location?.state?.form?.pathname)
     const destination = location?.state?.form?.pathname || '/'
@@ -25,8 +26,10 @@ const useFirebase = () => {
   }
 
   const signInWithGoogle = (location, history) => {
+    setIsLoading(true)
     signInWithPopup(auth, googleProvider)
       .then((result) => {
+        
         successRedirection(location, history)
       }).catch((error) => {
         setAuthErrorMsg(error.message);
@@ -36,8 +39,10 @@ const useFirebase = () => {
 
 
   const signUpWithEmialPassword = (signupData, location, history) => {
+    
     createUserWithEmailAndPassword(auth, signupData.email, signupData.password)
       .then((userCredential) => {
+        
         successRedirection(location, history)
       })
       .catch((error) => {
@@ -48,9 +53,12 @@ const useFirebase = () => {
 
 
   const loginInWithEmailAndPassword = (loginData, location, history) => {
+    setIsLoading(true)
     signInWithEmailAndPassword(auth, loginData.email, loginData.password)
       .then((userCredential) => {
+        
         successRedirection(location, history)
+        
       })
       .catch((error) => {
         setAuthErrorMsg(error.message)
@@ -74,6 +82,7 @@ const useFirebase = () => {
       console.log('calling on auth logout ')
       setCurrentUser(null)
     }
+    setIsLoading(false)
   });
 
   return {
@@ -81,6 +90,7 @@ const useFirebase = () => {
     currentUser, authErrorMsg,
     logout, signUpWithEmialPassword
     , loginInWithEmailAndPassword
+    , isLoading
   }
 
 }

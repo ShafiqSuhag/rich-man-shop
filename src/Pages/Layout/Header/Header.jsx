@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useRouteMatch } from 'react-router';
+import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import useServerConfig from '../../../hooks/useServerConfig';
 import "./Header.css";
 
 
 const Header = () => {
     const { currentUser, logout } = useAuth()
+    const serverUrl = useServerConfig()
+    let { path, url } = useRouteMatch();
     const handleLogout = () => {
         logout()
     }
@@ -20,16 +25,29 @@ const Header = () => {
             setIsMobileMenuActive(true)
         }
     }
+    const [isUserAdmin, setIsUserAdmin] = useState(false);
+    useEffect(() => {
+        if (currentUser?.email) {
+            axios.post(serverUrl + "/find-user-role", { email: currentUser?.email })
+                .then(response => {
+                    console.log(response);
+                    console.log(response.data.isAdmin);
+                    setIsUserAdmin(response.data.isAdmin);
+                })
+        }
+
+
+    }, [currentUser])
     return (
         <div>
 
 
             <nav className="flex justify-between items-center my-2 mx-5">
                 <div className="  lg:text-3xl text-gray-500 font-semibold ">
-                    RICH MAN SHOP
+                    <Link to="/">RICH MAN SHOP</Link>
                 </div>
                 <i class="fas fa-bars lg:hidden" onClick={handleMobileMenu}></i>
-                <div className=" py-2  flex items-center   large-menu">
+                <div className=" py-2  flex items-center   small-device-hide">
                     <NavLink to="/" className="nav-link-minimal">Home</NavLink>
                     <NavLink to="/explore-more-products" className="nav-link-minimal">Explore Sneakers</NavLink>
                     {
@@ -86,13 +104,35 @@ const Header = () => {
                                     </div>
                                 </li>
                                 <NavLink to="/dashboard" className="px-2 py-2 bg-gray-100 mb-1 block">Dashboard</NavLink>
-                                <li className="px-2 py-2 bg-gray-100 mb-1 block">
+                               
+                                {
+                                    isUserAdmin ?
+                                        <>
+                                            <NavLink to={`${url}/add-new-product`} className="px-2 py-2 bg-gray-100 mb-1 block">  New Product</NavLink>
+                                            <NavLink to={`${url}/product-list`} className="px-2 py-2 bg-gray-100 mb-1 block">   Manage Products</NavLink>
+                                            <NavLink to={`${url}/make-admin`} className="px-2 py-2 bg-gray-100 mb-1 block">      Make Admin</NavLink>
+                                            <NavLink to={`${url}/manage-all-orders`} className="px-2 py-2 bg-gray-100 mb-1 block">     Manage All Orders</NavLink>
+                                            <NavLink to={`${url}/product-list`} className="px-2 py-2 bg-gray-100 mb-1 block">   Manage Products</NavLink>
+
+                                        </>
+                                        :
+                                        <>
+                                            
+                                            <NavLink to={`${url}/my-orders`} className="px-2 py-2 bg-gray-100 mb-1 block"> My Orders</NavLink>
+                                            <NavLink to={`${url}/pay`} className="px-2 py-2 bg-gray-100 mb-1 block">Pay</NavLink>
+                                            <NavLink to={`${url}/review-list`} className="px-2 py-2 bg-gray-100 mb-1 block">Manage Review</NavLink>
+                                            <NavLink to={`${url}/add-review`} className="px-2 py-2 bg-gray-100 mb-1 block">New Review</NavLink>
+                                        </>
+                                }
+                                 <li className="px-2 py-2 bg-gray-100 mb-1 block">
                                     <button onClick={handleLogout} className="px-2 py-2 bg-gray-100 mb-1 block">Logout</button>
                                 </li>
 
-
                             </>
                     }
+                    {/* conditional menu  */}
+                    
+                    {/* conditional menu  */}
 
                 </ul>
             </div>

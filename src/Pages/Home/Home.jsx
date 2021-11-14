@@ -21,15 +21,19 @@ const Home = () => {
             {/* banner  */}
 
             {/* product grid  */}
-            <ProductSection></ProductSection>
+            <div>
+                <p className="my-10 text-4xl text-blue-700 text-center">Latest Products</p>
+                <ProductSection></ProductSection>
+            </div>
+
             <ReviewSection></ReviewSection>
             <div className="px-5 lg:px-28">
 
                 <SiteInfo></SiteInfo>
             </div>
 
-            
-            <Footer></Footer> 
+
+            <Footer></Footer>
         </div>
     );
 };

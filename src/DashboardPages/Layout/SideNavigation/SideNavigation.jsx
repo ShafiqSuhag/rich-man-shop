@@ -21,12 +21,7 @@ const SideNavigation = () => {
                     setIsUserAdmin(response.data.isAdmin);
                 })
         }
-        // If(currentUser?.email){
-        //     axios.post(serverUrl + "/find-user-role", {email:currentUser?.email})
-        //         .then(response =>
-        //             console.log("Check Admin response", response)
-        //         )
-        // }
+      
 
     }, [currentUser])
 
@@ -36,24 +31,12 @@ const SideNavigation = () => {
         <>
 
 
-            <div class="py-4 artboard artboard-demo bg-base-200 h-full rounded-none">
-                <div class="flex-1 hidden px-2 mx-2 lg:flex">
-                    <span class="text-lg font-bold">
-                        RICH MAN SHOP
-                    </span>
+            <div>
+                <div class="text-lg font-bold text-center">
+                    RICH MAN SHOP
                 </div>
-                <ul class="menu py-4 shadow-lg bg-base-100 rounded-box">
-                    {/* <li class="menu-title">
-                    <span>
-                    Menu Title
-                    </span>
-                    </li>
-                */}
-
-
-
-
-                    {/* ADMIN MENU  */}
+                <div className="menu  bg-base-200 h-full ">
+                    {/* conditional menu  */}
                     {
                         isUserAdmin ?
                             <>
@@ -173,9 +156,11 @@ const SideNavigation = () => {
                                 </li>
                             </>
                     }
-                    {/* ADMIN MENU  */}
-                </ul>
+                    {/* conditional menu  */}
+                </div>
             </div>
+
+           
         </>
         // <div className="w-2/12 sticky">
 

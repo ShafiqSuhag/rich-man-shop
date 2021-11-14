@@ -23,14 +23,14 @@ const Login = () => {
     // console.log(location?.state?.form?.pathname)
     const { signInWithGoogle, loginInWithEmailAndPassword, authErrorMsg } = useAuth()
     const handleGoogleSignIn = () => {
-        alert('Sign in')
+
         signInWithGoogle(location, history)
 
     }
     const handleEmailPasswordLogin = (e) => {
         e.preventDefault()
 
-        alert('login process  ')
+
         loginInWithEmailAndPassword(loginData, location, history)
     }
 
@@ -49,7 +49,7 @@ const Login = () => {
                         <div className="py-10">
                             {/* form  */}
                             <form onSubmit={handleEmailPasswordLogin} class="p-10 bg-white rounded flex justify-center items-center flex-col shadow-md">
-                          
+
                                 <p class="mb-5 text-3xl uppercase text-gray-600">Login</p>
                                 <input onBlur={handleOnBlur} type="email" name="email" class="mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none" autocomplete="off" placeholder="Email" required />
                                 <input onBlur={handleOnBlur} type="password" name="password" class="mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none" autocomplete="off" placeholder="Password" required />

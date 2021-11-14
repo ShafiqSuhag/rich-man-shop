@@ -1,5 +1,5 @@
 @media only screen and (max-width: 600px) {
-    .large-menu{
+    .small-device-hide{
         background-color: red;
         display:none;
        

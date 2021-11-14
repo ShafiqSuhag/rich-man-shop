@@ -7,16 +7,20 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 
 const sliders = [
     {
-        img: "https://dummyimage.com/1200x400/000/fff",
-        name: "slider 1"
+        img: "./images/slider/s-1.jpg",
+        name: ""
     },
     {
-        img: "https://dummyimage.com/1200x400/000/fff",
-        name: "slider 2"
+        img: "./images/slider/s-2.jpg",
+        name: ""
     },
     {
-        img: "https://dummyimage.com/1200x400/000/fff",
-        name: "slider 3"
+        img: "./images/slider/s-3.jpg",
+        name: ""
+    },
+    {
+        img: "./images/slider/s-4.jpg",
+        name: ""
     },
 ];
 
