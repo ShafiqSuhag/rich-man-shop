@@ -69,6 +69,7 @@ const useFirebase = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setCurrentUser(user)
+      console.log(user)
     } else {
       console.log('calling on auth logout ')
       setCurrentUser(null)

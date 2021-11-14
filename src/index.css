@@ -19,6 +19,10 @@ code {
   @apply bg-green-400 px-5 py-2 mx-1 my-2 rounded
 }
 
+.nav-link-minimal{
+	@apply text-lg font-semibold mx-3 border-b-2 border-gray-100 hover:border-green-500 transition duration-500 py-1 uppercase
+  }
+
 .left-sidebar-nav-link{
   @apply bg-white py-2  pl-2  rounded-sm border-b-2 border-green-100
 }

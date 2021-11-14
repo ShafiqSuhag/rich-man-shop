@@ -10,7 +10,6 @@ import ExploreMoreProducts from "./Pages/ExploreMoreProducts/ExploreMoreProducts
 import Home from './Pages/Home/Home';
 import Login from "./Pages/Login/Login";
 import NotFound from "./Pages/NotFound/NotFound";
-import Page from "./Pages/Page/Page";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import Signup from "./Pages/Signup/Signup";
@@ -25,7 +24,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Page/>
+              <Home/>
             </Route>
             <Route path="/home">
               <Home />
