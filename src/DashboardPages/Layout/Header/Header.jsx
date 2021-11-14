@@ -90,7 +90,7 @@ const Header = () => {
 
                                 <li className="px-2 py-2 bg-gray-100 mb-1 block">
                                     <div className="flex justify-between items-center">
-                                        <p className="">Welcom , {currentUser.displayName}</p>
+                                        <p className="">Welcom , {currentUser.email}</p>
                                         <div class="avatar online ml-3">
                                             <div class="rounded-full w-10 h-10">
                                                 <img src={currentUser?.photoURL ? currentUser?.photoURL : "./images/profile-pic.jpg"} alt=" profile " />

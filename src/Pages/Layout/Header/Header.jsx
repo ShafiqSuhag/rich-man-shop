@@ -66,7 +66,7 @@ const Header = () => {
                                     <div tabindex="0" class="btn btn-ghost rounded-btn">My Account</div>
                                     <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
                                         <li>
-                                            <p className="mx-auto">Welcom , {currentUser.displayName}</p>
+                                            <p className="mx-auto">Welcom , {currentUser.email}</p>
                                         </li>
 
                                         <li className="my-1">

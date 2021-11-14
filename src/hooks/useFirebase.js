@@ -1,5 +1,5 @@
 import {
-  createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut
+  createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile
 } from "firebase/auth";
 import { useState } from 'react';
 import initFirebase from '../api-config/firebase/firebase.init';
@@ -29,7 +29,7 @@ const useFirebase = () => {
     setIsLoading(true)
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-        
+
         successRedirection(location, history)
       }).catch((error) => {
         setAuthErrorMsg(error.message);
@@ -39,10 +39,15 @@ const useFirebase = () => {
 
 
   const signUpWithEmialPassword = (signupData, location, history) => {
-    
+
+    console.log('firebase-', signupData, signupData.fullName)
+
     createUserWithEmailAndPassword(auth, signupData.email, signupData.password)
       .then((userCredential) => {
-        
+        updateProfileInfo(signupData.fullName)
+        const newUser = { ...currentUser }
+        newUser["displayName"] = signupData.fullName
+        setCurrentUser(newUser)
         successRedirection(location, history)
       })
       .catch((error) => {
@@ -56,15 +61,33 @@ const useFirebase = () => {
     setIsLoading(true)
     signInWithEmailAndPassword(auth, loginData.email, loginData.password)
       .then((userCredential) => {
-        
+
         successRedirection(location, history)
-        
+
       })
       .catch((error) => {
         setAuthErrorMsg(error.message)
       });
   }
 
+
+  const updateProfileInfo = (userName) => {
+    console.log('fb-username', userName)
+
+    updateProfile(auth.currentUser, {
+      displayName: { userName }
+    }).then(() => {
+
+
+
+      // Profile updated!
+      // ...
+    }).catch((error) => {
+      // An error occurred
+      // ...
+    });
+
+  }
   const logout = () => {
     signOut(auth).then(() => {
       console.log('logout success')

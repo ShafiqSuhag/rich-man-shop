@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import MakeAdmin from '../../MakeAdmin/MakeAdmin';
 import ManageOrders from '../../ManageOrders/ManageOrders';
+import MyOrders from '../../MyOrders/MyOrders';
 import Payment from '../../Payment/Payment';
 import AddNewProduct from '../../Products/AddNewProduct/AddNewProduct';
 import ProductList from '../../Products/ProductList/ProductList';
@@ -34,6 +35,9 @@ const DashboardMaster = () => {
                     </Route>
                     <Route path={`${path}/manage-orders`}>
                         <ManageOrders></ManageOrders>
+                    </Route>
+                    <Route path={`${path}/my-orders`}>
+                        <MyOrders></MyOrders>
                     </Route>
                     <Route path={`${path}/payment`}>
                         <Payment></Payment>

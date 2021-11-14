@@ -120,7 +120,7 @@ const SideNavigation = () => {
                                 </li>
                                 <li class="">
                                     <NavLink
-                                        to={`${url}/pay`}
+                                        to={`${url}/payment`}
                                         className={isActive =>
                                             "" + (isActive ? " bordered" : " hover-bordered")
                                         }>

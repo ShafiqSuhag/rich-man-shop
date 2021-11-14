@@ -2,8 +2,8 @@ import React from 'react';
 
 const Payment = () => {
     return (
-        <div>
-            Payment
+        <div className="flex items-center justify-center h-28 bg-gray-200">
+            <p>Payment Coming Soon</p>
         </div>
     );
 };
