@@ -2,7 +2,7 @@ import React from 'react';
 
 const SiteInfo = () => {
     return (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cos-1 lg:grid-cols-3 gap-4">
             <div class="card shadow-2xl lg:card-side bg-primary text-primary-content">
                 <div class="card-body">
                     <p>Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.</p>

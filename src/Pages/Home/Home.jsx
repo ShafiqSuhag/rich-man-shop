@@ -1,9 +1,9 @@
 import React from 'react';
+import Footer from '../Layout/Footer/Footer';
 import Header from '../Layout/Header/Header';
-// import Footer from '../Layout/Footer/Footer';
-// import ProductSection from './ProductSection/ProductSection';
-// import ReviewSection from './ReviewSection/ReviewSection';
-// import SiteInfo from './SiteInfo/SiteInfo';
+import ProductSection from './ProductSection/ProductSection';
+import ReviewSection from './ReviewSection/ReviewSection';
+import SiteInfo from './SiteInfo/SiteInfo';
 import Slider from './Slider/Slider';
 
 const Home = () => {
@@ -21,15 +21,15 @@ const Home = () => {
             {/* banner  */}
 
             {/* product grid  */}
-            {/* <ProductSection></ProductSection>
+            <ProductSection></ProductSection>
             <ReviewSection></ReviewSection>
-            <div className="px-28">
+            <div className="px-5 lg:px-28">
 
                 <SiteInfo></SiteInfo>
             </div>
 
             
-            <Footer></Footer> */}
+            <Footer></Footer> 
         </div>
     );
 };
