@@ -33,7 +33,7 @@ const DashboardMaster = () => {
                     <Route path={`${path}/make-admin`}>
                         <MakeAdmin></MakeAdmin>
                     </Route>
-                    <Route path={`${path}/manage-orders`}>
+                    <Route path={`${path}/manage-all-orders`}>
                         <ManageOrders></ManageOrders>
                     </Route>
                     <Route path={`${path}/my-orders`}>

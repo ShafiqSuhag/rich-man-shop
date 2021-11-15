@@ -64,6 +64,9 @@ const ProductList = () => {
 
     return (
         <div class="overflow-x-auto relative">
+            <div>
+                <p className="text-3xl text-blue-600 my-5 ml-5">Manage Products</p>
+            </div>
             <SpinnerComponent loading={isLoading} position="centered" className="z-20">
             </SpinnerComponent>
             <div className="">

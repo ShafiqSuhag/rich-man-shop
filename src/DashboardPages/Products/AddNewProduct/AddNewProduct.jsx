@@ -74,7 +74,7 @@ const AddNewProduct = () => {
                 // handle error
                 console.log(error);
             })
-            .finally(()=> setIsProductAdding(false))
+            .finally(() => setIsProductAdding(false))
     };
 
 
@@ -106,9 +106,15 @@ const AddNewProduct = () => {
                         <label class="block mb-1" for="formGridCode_name">Product Price</label>
                         <input  {...register("price", { required: true })} class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="number" id="formGridCode_name" />
                     </div>
+                   
                     <div class="w-full px-2 md:w-1/2">
                         <label class="block mb-1" for="formGridCode_last">Product Category</label>
-                        <input  {...register("category", { required: true })} class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="formGridCode_last" />
+                        {/* <input  {...register("category", { required: true })} class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="formGridCode_last" /> */}
+                        <select {...register("category", { required: true })} class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline">
+                            <option value="Man">Man</option>
+                            <option value="Women">Women</option>
+                            <option value="Unisex">Unisex</option>
+                        </select>
                     </div>
                 </div>
                 <div class="flex flex-wrap">
@@ -143,9 +149,9 @@ const AddNewProduct = () => {
 
                 <button class="btn btn-outline btn-primary w-52 " type="submit" disabled={isProductAdding}>
                     {
-                        isProductAdding &&  <div className="  animate-spin loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-10 w-10 mr-7 my-1"></div>
+                        isProductAdding && <div className="  animate-spin loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-10 w-10 mr-7 my-1"></div>
                     }
-                    
+
                     SUBMIT</button>
 
             </form>

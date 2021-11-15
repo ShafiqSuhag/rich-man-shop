@@ -39,6 +39,7 @@ const CheckoutContactInfo = (props) => {
         data["image"]=image
         data["price"]=price
         data["description"]=description
+        data["status"]="pending"
         console.log("onSubmit",data)
 
 
