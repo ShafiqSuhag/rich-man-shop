@@ -63,7 +63,7 @@ const ProductList = () => {
     };
 
     return (
-        <div class="overflow-x-auto relative">
+        <div className="overflow-x-auto relative">
             <div>
                 <p className="text-3xl text-blue-600 my-5 ml-5">Manage Products</p>
             </div>
@@ -71,12 +71,12 @@ const ProductList = () => {
             </SpinnerComponent>
             <div className="">
 
-                <table class="table w-full">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             {/* <th>
                             <label>
-                                <input type="checkbox" class="checkbox" />
+                                <input type="checkbox" className="checkbox" />
                             </label>
                         </th> */}
                             <th>Product Name</th>
@@ -93,21 +93,21 @@ const ProductList = () => {
                                     <tr>
                                         {/* <th>
                                         <label>
-                                            <input type="checkbox" class="checkbox" />
+                                            <input type="checkbox" className="checkbox" />
                                         </label>
                                     </th> */}
                                         <td>
-                                            <div class="flex items-center space-x-3">
-                                                <div class="avatar">
-                                                    <div class="w-12 h-12 mask mask-squircle">
+                                            <div className="flex items-center space-x-3">
+                                                <div className="avatar">
+                                                    <div className="w-12 h-12 mask mask-squircle">
                                                         <img src={image} alt="Avatar Tailwind CSS Component" />
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div class="font-bold">
+                                                    <div className="font-bold">
                                                         {name}
                                                     </div>
-                                                    {/* <div class="text-sm opacity-50">
+                                                    {/* <div className="text-sm opacity-50">
                                                     United States
                                                 </div> */}
                                                 </div>
@@ -118,7 +118,7 @@ const ProductList = () => {
                                         </td>
                                         <td>{description ? description.substring(0, 40) + "..." : ""}</td>
                                         <th>
-                                            <button onClick={() => handleProductDelete(name, _id)}><i class="fas fa-trash-alt"></i></button>
+                                            <button onClick={() => handleProductDelete(name, _id)}><i className="fas fa-trash-alt"></i></button>
                                         </th>
 
                                     </tr>

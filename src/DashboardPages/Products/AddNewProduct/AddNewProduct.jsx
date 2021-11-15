@@ -88,79 +88,81 @@ const AddNewProduct = () => {
     }
 
     return (
-        <div className="px-10 pt-5">
+        <>
+            <div className="bg-green-200 py-10 px-5 text-2xl font-semibold">
+                ADD NEW PRODUCT
+            </div>
+            <div className="px-10 pt-5">
 
+                <form className="space-y-4 text-gray-700" onSubmit={handleSubmit(onSubmit)}>
 
-
-
-            <form class="space-y-4 text-gray-700" onSubmit={handleSubmit(onSubmit)}>
-
-                <div class="flex flex-wrap">
-                    <div class="w-full">
-                        <label class="block mb-1" for="formGridCode_card">Product Name</label>
-                        <input  {...register("name", { required: true })} class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="formGridCode_card" />
-                    </div>
-                </div>
-                <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
-                    <div class="w-full px-2 md:w-1/2">
-                        <label class="block mb-1" for="formGridCode_name">Product Price</label>
-                        <input  {...register("price", { required: true })} class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="number" id="formGridCode_name" />
-                    </div>
-                   
-                    <div class="w-full px-2 md:w-1/2">
-                        <label class="block mb-1" for="formGridCode_last">Product Category</label>
-                        {/* <input  {...register("category", { required: true })} class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="formGridCode_last" /> */}
-                        <select {...register("category", { required: true })} class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline">
-                            <option value="Man">Man</option>
-                            <option value="Women">Women</option>
-                            <option value="Unisex">Unisex</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="flex flex-wrap">
-                    <div class="w-full">
-                        <label class="block mb-1" for="formGridCode_card">Product Description</label>
-                        <textarea   {...register("description", { required: true })} rows="4" cols="50" class="w-full px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" id="formGridCode_card" />
-                    </div>
-                </div>
-                <div className="flex flex-wrap">
-                    <div className="w-6/12">
-                        <p>Upload product image</p>
-                        <div>
-                            {isUploading && <i class="fas fa-spinner animate-spin text-2xl text-blue-500"></i>}
-                            <input class="m-5" type="file" id="product-image-upload" onChange={handleImageUpload} accept="image/*" />
+                    <div className="flex flex-wrap">
+                        <div className="w-full">
+                            <label className="block mb-1" for="formGridCode_card">Product Name</label>
+                            <input  {...register("name", { required: true })} className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="formGridCode_card" />
                         </div>
                     </div>
-                    <div className="w-6/12">
-                        {
-                            uploadImageUrl && <div class="m-5 bg-gray-100 border  text-sm rounded px-2 py-1 inline-block ">
-                                {/* {uploadImageUrl} */}
-                                <img src={uploadImageUrl} class="" alt="" className="h-52" />
+                    <div className="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
+                        <div className="w-full px-2 md:w-1/2">
+                            <label className="block mb-1" for="formGridCode_name">Product Price</label>
+                            <input  {...register("price", { required: true })} className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="number" id="formGridCode_name" />
+                        </div>
+
+                        <div className="w-full px-2 md:w-1/2">
+                            <label className="block mb-1" for="formGridCode_last">Product Category</label>
+                            {/* <input  {...register("category", { required: true })} className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="formGridCode_last" /> */}
+                            <select {...register("category", { required: true })} className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline">
+                                <option value="Man">Man</option>
+                                <option value="Women">Women</option>
+                                <option value="Unisex">Unisex</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="flex flex-wrap">
+                        <div className="w-full">
+                            <label className="block mb-1" for="formGridCode_card">Product Description</label>
+                            <textarea   {...register("description", { required: true })} rows="4" cols="50" className="w-full px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" id="formGridCode_card" />
+                        </div>
+                    </div>
+                    <div className="flex flex-wrap">
+                        <div className="w-6/12">
+                            <p>Upload product image</p>
+                            <div>
+                                {isUploading && <i className="fas fa-spinner animate-spin text-2xl text-blue-500"></i>}
+                                <input className="m-5" type="file" id="product-image-upload" onChange={handleImageUpload} accept="image/*" />
                             </div>
-                        }
+                        </div>
+                        <div className="w-6/12">
+                            {
+                                uploadImageUrl && <div className="m-5 bg-gray-100 border  text-sm rounded px-2 py-1 inline-block ">
+                                    {/* {uploadImageUrl} */}
+                                    <img src={uploadImageUrl} className="" alt="" className="h-52" />
+                                </div>
+                            }
+
+                        </div>
+
+
 
                     </div>
 
 
 
+                    <button className="btn btn-outline btn-primary w-52 " type="submit" disabled={isProductAdding}>
+                        {
+                            isProductAdding && <div className="  animate-spin loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-10 w-10 mr-7 my-1"></div>
+                        }
+
+                        SUBMIT</button>
+
+                </form>
+                <div>
+                    <ToastContainer />
+
                 </div>
 
-
-
-                <button class="btn btn-outline btn-primary w-52 " type="submit" disabled={isProductAdding}>
-                    {
-                        isProductAdding && <div className="  animate-spin loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-10 w-10 mr-7 my-1"></div>
-                    }
-
-                    SUBMIT</button>
-
-            </form>
-            <div>
-                <ToastContainer />
-
             </div>
-
-        </div>
+        </>
     );
 };
 

@@ -12,7 +12,7 @@ import Header from '../Header/Header';
 import SideNavigation from '../SideNavigation/SideNavigation';
 
 const DashboardMaster = () => {
-    let { path, url } = useRouteMatch();
+    let { path } = useRouteMatch();
     return (
         <div className="flex ">
             <div className="bg-base-200 w-60  h-full fixed small-device-hide">

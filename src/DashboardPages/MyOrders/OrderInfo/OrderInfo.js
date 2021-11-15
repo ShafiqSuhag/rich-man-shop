@@ -42,7 +42,7 @@ const OrderInfo = (props) => {
                         
                         <button onClick={() => props.handleDelete(_id, name)}>
                         
-                            <i class="far fa-trash-alt"></i>
+                            <i className="far fa-trash-alt"></i>
                            
                         </button>
 

@@ -29,9 +29,9 @@ const Slider = () => {
         <div>
             <Carousel autoPlay showArrows={true} showThumbs={false} >
                 {
-                    sliders.map(slider => {
+                    sliders.map((slider, index) => {
                         return (
-                            <div>
+                            <div key={index}>
                                 <img src={slider.img} alt="" />
                                 <p className="legend">{slider.name}</p>
                             </div>)

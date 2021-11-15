@@ -8,7 +8,7 @@ import useServerConfig from '../../../hooks/useServerConfig';
 const Header = () => {
     const { currentUser, logout } = useAuth()
     const serverUrl = useServerConfig()
-    let { path, url } = useRouteMatch();
+    let {  url } = useRouteMatch();
 
     const handleLogout = () => {
         logout()
@@ -41,7 +41,7 @@ const Header = () => {
                 <div className="  lg:text-3xl text-gray-500 font-semibold md:hidden ">
                     <Link to="/">RICH MAN SHOP</Link>
                 </div>
-                <i class="fas fa-bars lg:hidden" onClick={handleMobileMenu}></i>
+                <i className="fas fa-bars lg:hidden" onClick={handleMobileMenu}></i>
                 <div className=" py-2  flex items-center   small-device-hide">
                     <NavLink to="/" className="nav-link-minimal">Home</NavLink>
                     <NavLink to="/explore-more-products" className="nav-link-minimal">Explore Sneakers</NavLink>
@@ -50,16 +50,16 @@ const Header = () => {
                             <NavLink to="/login" className="nav-link-minimal">Login</NavLink>
                             :
                             <>
-                                <div class="avatar online ml-3">
-                                    <div class="rounded-full w-10 h-10">
-                                        <img src={currentUser?.photoURL ? currentUser?.photoURL : "./images/profile-pic.jpg"} alt=" profile " />
+                                <div className="avatar online ml-3">
+                                    <div className="rounded-full w-10 h-10">
+                                        <img src={currentUser?.photoURL ? currentUser?.photoURL : "/images/profile-pic.jpg"} alt=" profile " />
                                     </div>
                                 </div>
 
 
-                                <div class="dropdown dropdown-end mx-3">
-                                    <div tabindex="0" class="btn btn-ghost rounded-btn">My Account</div>
-                                    <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
+                                <div className="dropdown dropdown-end mx-3">
+                                    <div tabIndex="0" className="btn btn-ghost rounded-btn">My Account</div>
+                                    <ul tabIndex="0" className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
                                         <li>
                                             <p className="mx-auto">Welcom , {currentUser.displayName}</p>
                                         </li>
@@ -91,8 +91,8 @@ const Header = () => {
                                 <li className="px-2 py-2 bg-gray-100 mb-1 block">
                                     <div className="flex justify-between items-center">
                                         <p className="">Welcom , {currentUser.email}</p>
-                                        <div class="avatar online ml-3">
-                                            <div class="rounded-full w-10 h-10">
+                                        <div className="avatar online ml-3">
+                                            <div className="rounded-full w-10 h-10">
                                                 <img src={currentUser?.photoURL ? currentUser?.photoURL : "./images/profile-pic.jpg"} alt=" profile " />
                                             </div>
                                         </div>

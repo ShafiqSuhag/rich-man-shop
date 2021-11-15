@@ -1,10 +1,27 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import useServerConfig from '../../../hooks/useServerConfig';
 import ReviewItem from './ReviewItem/ReviewItem';
 
 
 const ReviewSection = () => {
+    const serverUrl = useServerConfig()
+
+    const [reveiwList, setReviewList] = useState([])
+
+    useEffect(() => {
+        // get review list  
+        axios.get(serverUrl + '/reviews')
+            .then(response => {
+
+                console.log("review list - ", response)
+                setReviewList(response.data.productList)
+            })
+    }, [])
+
+
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
@@ -46,19 +63,17 @@ const ReviewSection = () => {
                     keyBoardControl={true}
                     customTransition="all .5"
                     transitionDuration={500}
-                    containerClass="carousel-container"
+                    containerclassName="carousel-container"
                     removeArrowOnDeviceType={["tablet", "mobile"]}
 
-                    dotListClass="custom-dot-list-style"
-                    itemClass="carousel-item-padding-40-px"
+                    dotListclassName="custom-dot-list-style"
+                    itemclassName="carousel-item-padding-40-px"
                 >
-                    <ReviewItem></ReviewItem>
-                    <ReviewItem></ReviewItem>
-                    <ReviewItem></ReviewItem>
-                    <ReviewItem></ReviewItem>
-                    <div>
-                        hello sohag
-                    </div>
+                    {
+                        reveiwList.map((review, index) => <ReviewItem key={index} review={review}></ReviewItem>)
+                    }
+
+                    
                 </Carousel>;
             </div>
 

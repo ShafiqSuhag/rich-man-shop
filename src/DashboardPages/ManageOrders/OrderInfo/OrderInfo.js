@@ -39,7 +39,7 @@ const OrderInfo = (props) => {
                 <div className="flex item-center justify-center">
                     {
                         status === "pending" ?
-                            <button onClick={() => props.handleActiveOrder(_id)} class="btn btn-sm">
+                            <button onClick={() => props.handleActiveOrder(_id)} className="btn btn-sm">
                                 Active Order
                             </button> : ""
                     }
@@ -49,7 +49,7 @@ const OrderInfo = (props) => {
                         <button onClick={() => props.handleDelete(_id, name)}>
 
 
-                            <i class="far fa-trash-alt"></i>
+                            <i className="far fa-trash-alt"></i>
 
                         </button>
 

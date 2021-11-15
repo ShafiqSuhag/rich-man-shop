@@ -32,7 +32,7 @@ const SideNavigation = () => {
 
 
             <div>
-                <div class="text-lg font-bold text-center">
+                <div className="text-lg font-bold text-center">
                     RICH MAN SHOP
                 </div>
                 <div className="menu  bg-base-200 h-full ">
@@ -40,13 +40,13 @@ const SideNavigation = () => {
                     {
                         isUserAdmin ?
                             <>
-                                <li class="">
+                                <li className="">
                                     <NavLink
                                         to={`${url}/add-new-product`}
                                         className={isActive =>
                                             "" + (isActive ? " bordered" : " hover-bordered")
                                         }>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 mr-2 stroke-current">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                                         </svg>
                                         New Product
@@ -56,37 +56,37 @@ const SideNavigation = () => {
                        Add New Product
                     </Link> */}
                                 </li>
-                                <li class="">
+                                <li className="">
                                     <NavLink
                                         to={`${url}/product-list`}
                                         className={isActive =>
                                             "" + (isActive ? " bordered" : " hover-bordered")
                                         }>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 mr-2 stroke-current">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                                         </svg>
                                         Manage Products
                                     </NavLink>
                                 </li>
-                                <li class="">
+                                <li className="">
                                     <NavLink
                                         to={`${url}/make-admin`}
                                         className={isActive =>
                                             "" + (isActive ? " bordered" : " hover-bordered")
                                         }>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 mr-2 stroke-current">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                                         </svg>
                                         Make Admin
                                     </NavLink>
                                 </li>
-                                <li class="">
+                                <li className="">
                                     <NavLink
                                         to={`${url}/manage-all-orders`}
                                         className={isActive =>
                                             "" + (isActive ? " bordered" : " hover-bordered")
                                         }>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 mr-2 stroke-current">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                                         </svg>
                                         Manage All Orders
@@ -97,58 +97,58 @@ const SideNavigation = () => {
                             :
 
                             <>
-                                <li class="bordered">
+                                <li className="bordered">
                                     <Link to={`${url}`}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 mr-2 stroke-current">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                                         </svg>
                                         Dashboard
                                     </Link>
                                 </li>
 
-                                <li class="">
+                                <li className="">
                                     <NavLink
                                         to={`${url}/my-orders`}
                                         className={isActive =>
                                             "" + (isActive ? " bordered" : " hover-bordered")
                                         }>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 mr-2 stroke-current">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                                         </svg>
                                         My Orders
                                     </NavLink>
                                 </li>
-                                <li class="">
+                                <li className="">
                                     <NavLink
                                         to={`${url}/payment`}
                                         className={isActive =>
                                             "" + (isActive ? " bordered" : " hover-bordered")
                                         }>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 mr-2 stroke-current">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                                         </svg>
                                         Pay
                                     </NavLink>
                                 </li>
-                                <li class="">
+                                <li className="">
                                     <NavLink
                                         to={`${url}/review-list`}
                                         className={isActive =>
                                             "" + (isActive ? " bordered" : " hover-bordered")
                                         }>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 mr-2 stroke-current">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                                         </svg>
                                         Review list
                                     </NavLink>
                                 </li>
-                                <li class="">
+                                <li className="">
                                     <NavLink
                                         to={`${url}/add-review`}
                                         className={isActive =>
                                             "" + (isActive ? " bordered" : " hover-bordered")
                                         }>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 mr-2 stroke-current">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                                         </svg>
                                         New Review
@@ -164,7 +164,7 @@ const SideNavigation = () => {
         </>
         // <div className="w-2/12 sticky">
 
-        //     <ul class="list-disc">
+        //     <ul className="list-disc">
         //         <li className="left-sidebar-nav-link">
         //             <Link className="block" to={`${url}`}>Dashboard</Link>
         //         </li>

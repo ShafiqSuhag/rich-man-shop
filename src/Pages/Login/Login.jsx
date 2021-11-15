@@ -30,7 +30,7 @@ const Login = () => {
     const handleEmailPasswordLogin = (e) => {
         e.preventDefault()
 
-
+        console.log('handleEmailPasswordLogin - ', loginData)
         loginInWithEmailAndPassword(loginData, location, history)
     }
 
@@ -45,15 +45,15 @@ const Login = () => {
             <div>
                 <>
 
-                    <div class="h-screen flex justify-center items-center bg-gray-100">
+                    <div className="h-screen flex justify-center items-center bg-gray-100">
                         <div className="py-10">
                             {/* form  */}
-                            <form onSubmit={handleEmailPasswordLogin} class="p-10 bg-white rounded flex justify-center items-center flex-col shadow-md">
+                            <form onSubmit={handleEmailPasswordLogin} className="p-10 bg-white rounded flex justify-center items-center flex-col shadow-md">
 
-                                <p class="mb-5 text-3xl uppercase text-gray-600">Login</p>
-                                <input onBlur={handleOnBlur} type="email" name="email" class="mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none" autocomplete="off" placeholder="Email" required />
-                                <input onBlur={handleOnBlur} type="password" name="password" class="mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none" autocomplete="off" placeholder="Password" required />
-                                <button class="bg-purple-600 hover:bg-purple-900 text-white font-bold p-2 rounded w-80" id="login" type="submit"><span>Login</span></button>
+                                <p className="mb-5 text-3xl uppercase text-gray-600">Login</p>
+                                <input onBlur={handleOnBlur} type="email" name="email" className="mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none" autocomplete="off" placeholder="Email" required />
+                                <input onBlur={handleOnBlur} type="password" name="password" className="mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none" autocomplete="off" placeholder="Password" required />
+                                <button className="bg-purple-600 hover:bg-purple-900 text-white font-bold p-2 rounded w-80" id="login" type="submit"><span>Login</span></button>
                             </form>
                             {/* form  */}
 
@@ -62,7 +62,7 @@ const Login = () => {
                                 <div className="my-3">
                                     <Link className="text-lg font-semibold underline text-gray-600" to="/signup">Have no account ? Signup</Link>
                                 </div>
-                                <button onClick={handleGoogleSignIn} class="bg-green-600 hover:bg-green-900 text-white font-bold p-2 rounded w-80" id="login" type="submit"><span>Sign In With Google</span></button>
+                                <button onClick={handleGoogleSignIn} className="bg-green-600 hover:bg-green-900 text-white font-bold p-2 rounded w-80" id="login" type="submit"><span>Sign In With Google</span></button>
                                 {
                                     authErrorMsg ? <div className="bg-red-400 text-white px-10 py-5">{authErrorMsg}</div> : ''
                                 }

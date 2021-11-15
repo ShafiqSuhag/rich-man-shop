@@ -29,7 +29,8 @@ const useFirebase = () => {
     setIsLoading(true)
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-
+        console.log("signin in with google ", result.user)
+        // setCurrentUser(result.user)
         successRedirection(location, history)
       }).catch((error) => {
         setAuthErrorMsg(error.message);
@@ -42,12 +43,25 @@ const useFirebase = () => {
 
     console.log('firebase-', signupData, signupData.fullName)
 
+
     createUserWithEmailAndPassword(auth, signupData.email, signupData.password)
-      .then((userCredential) => {
-        updateProfileInfo(signupData.fullName)
-        const newUser = { ...currentUser }
-        newUser["displayName"] = signupData.fullName
-        setCurrentUser(newUser)
+      .then((result) => {
+        console.log("signUpWithEmialPassword ", result.user)
+        // setCurrentUser(result.user)
+        // // updateProfileInfo(signupData.fullName)
+        updateProfile(auth.currentUser, {
+          displayName: signupData.fullName
+        }).then((updateResulte) => {
+          console.log("updateResulte -", updateResulte)
+          const newUser = { email: signupData.email, displayName: signupData.fullName }
+          setCurrentUser(newUser)
+        }).catch((error) => {
+          console.log("updateResulte failed -", error)
+        });
+        // console.log('newuser-1' , newUser)
+        // // newUser["displayName"] = signupData.fullName
+        // console.log("New user",currentUser)
+        // setCurrentUser(result.user)
         successRedirection(location, history)
       })
       .catch((error) => {
@@ -58,14 +72,18 @@ const useFirebase = () => {
 
 
   const loginInWithEmailAndPassword = (loginData, location, history) => {
+    console.log("firebase > loginInWithEmailAndPassword ", loginData)
     setIsLoading(true)
     signInWithEmailAndPassword(auth, loginData.email, loginData.password)
-      .then((userCredential) => {
+      .then((result) => {
 
+        console.log("loginInWithEmailAndPassword - success", result.user)
+        setCurrentUser(result.user)
         successRedirection(location, history)
 
       })
       .catch((error) => {
+        console.log('loginInWithEmailAndPassword-failed')
         setAuthErrorMsg(error.message)
       });
   }
@@ -100,7 +118,7 @@ const useFirebase = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setCurrentUser(user)
-      console.log(user)
+      console.log("onAuthStateChanged- success", user)
     } else {
       console.log('calling on auth logout ')
       setCurrentUser(null)
@@ -110,10 +128,12 @@ const useFirebase = () => {
 
   return {
     signInWithGoogle,
-    currentUser, authErrorMsg,
-    logout, signUpWithEmialPassword
-    , loginInWithEmailAndPassword
-    , isLoading
+    currentUser,
+    authErrorMsg,
+    logout,
+    signUpWithEmialPassword,
+    loginInWithEmailAndPassword,
+    isLoading
   }
 
 }

@@ -59,12 +59,12 @@ const MakeAdmin = () => {
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div class="p-10  card bg-base-200 flex">
-                    <div class="form-control w-80">
-                        <label class="label">
-                            <span class="label-text">Username</span>
+                <div className="p-10  card bg-base-200 flex">
+                    <div className="form-control w-80">
+                        <label className="label">
+                            <span className="label-text">Username</span>
                         </label>
-                        <input type="email"  class="input"  {...register("email", { required: true, maxLength: 80 })} />
+                        <input type="email"  className="input"  {...register("email", { required: true, maxLength: 80 })} />
                     </div>
                     <input type="submit" className="btn btn-primary btn-sm my-3 w-80"/>
                 </div>
